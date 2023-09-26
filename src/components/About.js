@@ -1,21 +1,9 @@
 export default function about() {
     return (
-        <div>
-        <header className="App-header">
-            <h2>Crud App</h2>
-        </header>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/list">Project List</Link></li>
-            <li><Link to="/about">About</Link></li>
-        </ul>
-      
-      <Outlet />
-      <footer className="App-footer">
-          <p>Copyright 2023</p>
-          <p>Envirnment Variable (set in root/.env): {process.env.REACT_APP_SERVER_URL}</p>
-      </footer>
-</div>
+    <div>
+        <h1>An About Page</h1>
+        <p>Nothing to see here folks. . .</p>
+    </div>
     );
   }
   

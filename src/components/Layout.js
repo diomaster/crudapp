@@ -14,7 +14,7 @@ export default function Layout() {
       
       <Outlet />
       <footer className="App-footer">
-          <p>Copyright 2023</p>
+          <p>&copy; Copyright 2023</p>
           <p>Envirnment Variable (set in root/.env): {process.env.REACT_APP_SERVER_URL}</p>
       </footer>
 </div>
