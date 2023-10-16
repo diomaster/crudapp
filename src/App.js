@@ -16,6 +16,22 @@ function App() {
 {"id": 2, "title": "Medium-Project", "description": "Build a Doghouse"}]
 const [projects, setProjects] = useState(myArray);
 
+fetch('api/projects', {
+  method: "GET",
+})
+  .then((response) => {
+      return response.json();
+  })
+  .then((resp) => {
+      console.log('something is returned....');
+      console.log(resp)
+      setProjects(resp)
+  })
+  .catch((err) => {
+      // Code called when an error occurs during the request
+      console.log(err.message);
+  });
+
   return (
     <ProjectContext.Provider value={{projects, setProjects}}>
     <Router>
