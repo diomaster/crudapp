@@ -3,25 +3,26 @@ import {ProjectContext} from '../App.js';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function List(props) {
-  let {projects, setProjects} = useContext(ProjectContext)
+  let {projects} = useContext(ProjectContext)
 
   const navigate = useNavigate()
   let {setDBUpdated} = useContext(ProjectContext)
-  const deleteMe = (pid) => {
+
+  const deleteProject = (pid) => {
     let url = 'api/projects/' + pid
-        fetch(url, {
-            method: "DELETE",
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((resp) => {
-                setDBUpdated("true")
-            })
-            .catch((err) => {
-                // Code called when an error occurs during the request
-                console.log(err.message);
-            });
+    fetch(url, {
+        method: "DELETE",
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((resp) => {
+        setDBUpdated("true")
+      })
+      .catch((err) => {
+        // Code called when an error occurs during the request
+        console.log(err.message);
+      });
   }
 
     return (
@@ -46,8 +47,8 @@ export default function List(props) {
                   <td>{e.id}</td>
                   <td>{e.title}</td>
                   <td>{e.description}</td>
-                  <td><button className="primary" onClick={() => navigate(`/project/${e.id}`)}>Edit</button></td>
-                  <td><button onClick={() => { deleteMe(e._id) }}>Delete</button></td>
+                  <td><button className="primary" onClick={() => navigate(`/project/${e._id}`)}>Edit</button></td>
+                  <td><button onClick={() => { deleteProject(e._id) }}>Delete</button></td>
                 </tr>
               )
             })

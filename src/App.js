@@ -12,26 +12,24 @@ export const ProjectContext = createContext()
 
 function App() {
 
- 
 const [projects, setProjects] = useState([]);
 const [DBUpdated, setDBUpdated] = useState(false);
-
 useEffect(() => {
-fetch('api/projects', {
-  method: "GET",
-})
-  .then((response) => {
+  fetch('api/projects', {
+      method: "GET",
+    })
+    .then((response) => {
       return response.json();
-  })
-  .then((resp) => {
+    })
+    .then((resp) => {
       setProjects(resp)
       setDBUpdated(false)
-  })
-  .catch((err) => {
+    })
+    .catch((err) => {
       // Code called when an error occurs during the request
       console.log(err.message);
-  });
-},[DBUpdated])
+    });
+}, [DBUpdated])
 
   return (
     <ProjectContext.Provider value={{projects, setProjects}}>
